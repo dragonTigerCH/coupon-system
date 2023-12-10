@@ -37,13 +37,10 @@ class ApplyServiceTest {
     public void 여러명_응모() throws InterruptedException {
 
         int threadCount = 1000;
-        ExecutorService executorService = Executors.newFixedThreadPool(32); //병렬작업을 간단하게 만들어주는 유틸리티 클래스
+        ExecutorService executorService = Executors.newFixedThreadPool(32);
 
         CountDownLatch countDownLatch = new CountDownLatch(threadCount);
 
-        // submit은 Callable을 받아서 Future를 리턴한다.
-        // Callable ? Runnable과 유사하지만 작업의 결과를 받을 수 있다.
-        // Future ? 비동기적인 작업의 현재 상태를 조회하거나 결과를 가져올 수 있다.
         for (int i = 0; i < threadCount; i++){
             long userId = i;
                 executorService.submit(() -> {
